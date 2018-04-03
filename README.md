@@ -1,0 +1,2 @@
+# taobao_changtu_zidongqiege
+淘宝页面中有很多长图，对此类图片进行自动切割

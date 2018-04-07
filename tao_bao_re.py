@@ -27,3 +27,38 @@ def get_sid_from_img_info_url(img_info_url):
     r = re.findall(pattern, img_info_url)
     sid = r[0][4: -1]
     return sid
+
+
+# 获取主图，根据关键字_50x50.jpg
+def get_zhutu_urls_from_string(html_str):
+    # temp_str = r'<a href="#"><img data-src="//gd2.alicdn.com/imgextra/i1/1798680826/TB2sOVXa0knBKNjSZKPXXX6OFXa_!!1798680826.jpg_50x50.jpg" /'
+    pattern = r'//(.*?)_50x50.jpg'
+    rs = re.findall(pattern, html_str)
+    urls = []
+    for r in rs:
+        url = 'https://' + r
+        urls.append(url)
+    return urls
+
+
+# 获取分类图，根据关键字_30x30.jpg
+def get_fen_lei_urls_from_string(html_str):
+    # temp_str = r'<a href="javascript:;" style="background:url(//gd1.alicdn.com/imgextra/i3/1798680826/TB2ahuTcx9YBuNjy0FfXXXIsVXa_!!1798680826.jpg_30x30.jpg) center no-repeat;">'
+    pattern = r'//(.*?)_30x30.jpg'
+    rs = re.findall(pattern, html_str)
+    urls = []
+    for r in rs:
+        url = 'https://' + r
+        urls.append(url)
+    return urls
+
+if __name__ == '__main__':
+    temp_str = r'<a href="#"><img data-src="//gd2.alicdn.com/imgextra/i1/1798680826/TB2sOVXa0knBKNjSZKPXXX6OFXa_!!1798680826.jpg_50x50.jpg" /'
+    re_str = get_zhutu_urls_from_string(temp_str)
+
+    temp_str2 = r'<a href="javascript:;" style="background:url(//gd1.alicdn.com/imgextra/i3/1798680826/TB2ahuTcx9YBuNjy0FfXXXIsVXa_!!1798680826.jpg_30x30.jpg) center no-repeat;">'
+    re_str2 = get_fen_lei_urls_from_string(temp_str2)
+
+
+    print("done!")
+

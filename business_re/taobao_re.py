@@ -52,6 +52,19 @@ def get_fen_lei_urls_from_string(html_str):
         urls.append(url)
     return urls
 
+
+# 获取分类的字
+def get_fen_lei_text_from_str(html_str):
+    pattern = r'<li data-value=.*?<span>(.*?)</span>'
+    return_str = re.findall(pattern, html_str, re.S)
+    return return_str
+
+# 提取获取价格的地址
+def get_price_url_from_html(html_str):
+    pattern = r"wholeSibUrl      : '//(.*?)'"
+    return_str = re.findall(pattern, html_str)
+    return return_str[0]
+
 if __name__ == '__main__':
     temp_str = r'<a href="#"><img data-src="//gd2.alicdn.com/imgextra/i1/1798680826/TB2sOVXa0knBKNjSZKPXXX6OFXa_!!1798680826.jpg_50x50.jpg" /'
     re_str = get_zhutu_urls_from_string(temp_str)
@@ -59,6 +72,10 @@ if __name__ == '__main__':
     temp_str2 = r'<a href="javascript:;" style="background:url(//gd1.alicdn.com/imgextra/i3/1798680826/TB2ahuTcx9YBuNjy0FfXXXIsVXa_!!1798680826.jpg_30x30.jpg) center no-repeat;">'
     re_str2 = get_fen_lei_urls_from_string(temp_str2)
 
+
+    temp_str3 = r'<ul data-property="颜色分类" class="J_TSaleProp tb-img tb-clearfix"><li data-value="1627207:431809108" class="tb-txt"><a href="javascript:void(0);"><span>30CM挂轴一对</span></a><i>已选中</i></li>'
+
+    re.findall()
 
     print("done!")
 

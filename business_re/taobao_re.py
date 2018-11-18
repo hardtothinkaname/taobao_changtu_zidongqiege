@@ -12,7 +12,7 @@ def get_img_info_url_from_html(html_str):
 
 def get_all_detail_pic_url_from_json(json_str, sid):
     # 获取可以得到详情页图片的url
-    pattern = r',"(.*?)(jpg|png)"'
+    pattern = r',"(.*?)(jpg|png|gif)"'
     r = re.findall(pattern, json_str)
     all_item = []
     for obj in r:
